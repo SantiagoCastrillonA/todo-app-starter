@@ -1,0 +1,290 @@
+/* ===== Colores y base ===== */
+:root {
+  --fondo: #0f1412;
+  --tarjeta: #171e1b;
+  --borde: #26302c;
+  --texto: #e6ede9;
+  --texto-suave: #92a199;
+  --verde: #34d399;
+  --verde-oscuro: #10b981;
+  --verde-fondo: rgba(52, 211, 153, 0.12);
+  --rojo: #f87171;
+  --rojo-fondo: rgba(248, 113, 113, 0.12);
+  --radio: 12px;
+
+  color-scheme: dark;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--texto);
+  background-color: var(--fondo);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--fondo);
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+:focus-visible {
+  outline: 2px solid var(--verde);
+  outline-offset: 2px;
+}
+
+/* ===== Estructura ===== */
+.contenedor {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.tarjeta {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 24px;
+}
+
+.encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.subtitulo {
+  margin: 6px 0 20px;
+  color: var(--texto-suave);
+}
+
+/* ===== Formularios ===== */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.formulario label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  width: 100%;
+  padding: 11px 12px;
+  color: var(--texto);
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+}
+
+input::placeholder {
+  color: #5f6d66;
+}
+
+input:focus {
+  border-color: var(--verde);
+  outline: none;
+}
+
+.nueva-tarea {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* ===== Botones ===== */
+.boton-principal {
+  padding: 11px 18px;
+  font-weight: 600;
+  color: #04120c;
+  background: var(--verde);
+  border: none;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.boton-principal:hover:not(:disabled) {
+  background: var(--verde-oscuro);
+}
+
+.boton-secundario {
+  padding: 8px 14px;
+  color: var(--texto);
+  background: transparent;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.boton-secundario:hover {
+  border-color: var(--texto-suave);
+}
+
+.boton-enlace {
+  display: block;
+  margin: 18px auto 0;
+  padding: 4px;
+  color: var(--verde);
+  background: none;
+  border: none;
+}
+
+.boton-enlace:hover {
+  text-decoration: underline;
+}
+
+/* ===== Mensajes ===== */
+.mensaje {
+  margin: 24px 0 8px;
+  text-align: center;
+  color: var(--texto-suave);
+}
+
+.error {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  color: var(--rojo);
+  background: var(--rojo-fondo);
+  border-radius: 8px;
+}
+
+/* ===== Filtros y contador (extras) ===== */
+.barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.contador {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+.filtros {
+  display: flex;
+  gap: 6px;
+}
+
+.filtro {
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  background: transparent;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+}
+
+.filtro:hover {
+  color: var(--texto);
+}
+
+.filtro.activo {
+  color: var(--verde);
+  background: var(--verde-fondo);
+  border-color: var(--verde);
+}
+
+/* ===== Lista de tareas ===== */
+.lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tarea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 4px;
+  border-top: 1px solid var(--borde);
+}
+
+.tarea-check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.tarea-check input {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  accent-color: var(--verde);
+  cursor: pointer;
+}
+
+.titulo {
+  overflow-wrap: anywhere;
+}
+
+.titulo.completada {
+  color: var(--texto-suave);
+  text-decoration: line-through;
+}
+
+.boton-eliminar {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  color: var(--rojo);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+
+.boton-eliminar:hover {
+  background: var(--rojo-fondo);
+  border-color: var(--rojo);
+}
+
+/* ===== Celular ===== */
+@media (max-width: 480px) {
+  .contenedor {
+    padding: 16px 12px;
+  }
+
+  .tarjeta {
+    padding: 18px 16px;
+  }
+
+  h1 {
+    font-size: 1.35rem;
+  }
+}
