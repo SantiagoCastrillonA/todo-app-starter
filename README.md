@@ -20,14 +20,26 @@ Hazlo una sola vez.
    npm install
    ```
 
-2. Instala las dependencias del frontend (desde la carpeta principal del proyecto):
+2. Instala las dependencias del frontend. Como sigues dentro de `backend`, primero subes un nivel con `..`:
 
    ```bash
-   cd frontend
+   cd ../frontend
    npm install
    ```
 
-3. Copia `backend/.env.example` a `backend/.env`, y `frontend/.env.example` a `frontend/.env`.
+3. Copia `backend/.env.example` a `backend/.env`, y `frontend/.env.example` a `frontend/.env`. Desde la carpeta principal del proyecto:
+
+   ```bash
+   # Git Bash, macOS o Linux
+   cp backend/.env.example backend/.env
+   cp frontend/.env.example frontend/.env
+   ```
+
+   ```powershell
+   # PowerShell o CMD en Windows
+   copy backend\.env.example backend\.env
+   copy frontend\.env.example frontend\.env
+   ```
 
 4. Genera un secreto para los tokens:
 
@@ -121,6 +133,19 @@ Si terminan los tres niveles, busquen el comentario `// EXTRA` en `frontend/src/
 - Un contador de tareas pendientes.
 
 Los estilos de los extras ya están listos en `frontend/src/index.css`.
+
+## Si algo no funciona
+
+| Ves esto | Qué significa | Qué hacer |
+| --- | --- | --- |
+| `Falta implementar ...` | Esa función o ruta todavía es un TODO | ¡Es normal! Es justo lo que les toca construir |
+| `Token inválido o vencido` | El token dura 2 horas y ya venció (o lo modificaron) | Clic en "Cerrar sesión" y vuelvan a entrar |
+| `No se pudo conectar con el servidor` | El backend está apagado | Revisen la terminal 1: debe decir "Servidor escuchando" |
+| `No se pudo conectar a MongoDB` | MongoDB no está corriendo en su computador | Inicien el servicio de MongoDB y prueben conectar con Compass |
+| `Faltan variables en backend/.env` | No existe `backend/.env` o le falta algo | Repitan los pasos 3 y 4 de la instalación |
+| Dos peticiones GET iguales en `F12 → Network` | En desarrollo, React ejecuta los efectos dos veces a propósito (`StrictMode`) | Es normal, no es un error |
+
+Antes de pedir ayuda: lean el error completo, abran `F12 → Network` y miren qué petición falló y qué respondió el backend.
 
 ## Recuerden
 
